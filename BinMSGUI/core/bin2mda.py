@@ -50,9 +50,6 @@ def bin2mda(bin_filename, set_filename, Fs=48e3, notch_filter=True, notch_freq=6
         else:
             print(msg)
 
-        # get_tetrode_data
-        data = get_bin_data(bin_filename, tetrode=tetrode)
-
         # check if the data has been filtered already
 
         # TODO: add some methods to find out if the data has been filtered or not
@@ -76,6 +73,9 @@ def bin2mda(bin_filename, set_filename, Fs=48e3, notch_filter=True, notch_freq=6
             else:
                 print(msg)
             continue
+
+        # get_tetrode_data
+        data = get_bin_data(bin_filename, tetrode=tetrode)
 
         if notch_filter:
             data = notch_filt(data, Fs, freq=notch_freq)
